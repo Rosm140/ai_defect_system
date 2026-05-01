@@ -2,9 +2,10 @@ import serial
 
 ser = serial.Serial('COM3', 115200)
 
-print("Listening for ESP32 data...\n")
+print("Listening for ESP32 data...")
 
 while True:
-    if ser.in_waiting:
-        line = ser.readline().decode('utf-8').strip()
+    line = ser.readline().decode('utf-8', errors='ignore').strip()
+    
+    if line:
         print(line)
